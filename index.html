@@ -1,28 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>多引擎搜索</title>
 <meta charset="UTF-8">
-<title>网址收藏</title>
-<meta name="author" content="allanyu">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,maximum-scale=1">
-<meta name="format-detection" content="telephone=no, email=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta name="full-screen" content="yes">
-<meta name="screen-orientation" content="portrait">
-<meta name="mobile-web-app-capable" content="yes">
 <style>
 body{
 	padding:0;
-	margin:1%;
+	margin:0;
 	background-color:#f6f6f6;
-	color:font-size:1.0em;
+	font-size:1.0em;
 	font-size:100%;
 	line-height:1.5;
 	width:100%;
-	background:#fff;
+	background:#f2f2f2;
 }
-a{
+#main{
+	position:absolute;
+	width:100%;
+	height:300px;
+	left:50%;
+	top:50%; 
+	margin-left:-50%;
+	margin-top:-180px;
+	text-align:center;
+	overflow:auto;
+}
+.link{
+	width:97%;
+	height:80px;
+	line-height:60px;
+	margin-left:2%;
+}
+.link a{
+	display:block;
+	float:left;
+	height:2.5em;
+	line-height:2em;
+	width:32.2%;
+	border:1px solid #fff;
+	color:#f2f2f2;
+	background-color:#4969c7;
+	margin-right:1%;
+	padding:0.2em 0;
+	font-size:1.0em;
+	text-decoration:none;
+}
+input{
+	display:block;
+	width:96%;
+	border:1px solid #aaa;
+	font-size:1.2em;
+	margin:0 0 0.5em 2%;
+	padding:0.5em;
+	box-shadow:1px 1px 2px #aaa;
+	border-radius:5px;
+}
+.btn{
+	float:left;
+	width:47%;
+	height:3em;
+	line-height:3em;
+	margin:0.8em 0 0 2%;
+	background-color:#ffffee;
+	cursor:pointer;
+	font-size:1.0em;
+	box-shadow:1px 1px 2px #aaa;
+}
+.link a,.btn{
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+}
+#m,#au,#v{
+	display:none;
+	position:fixed;
+	width:100%;
+	height:100%;
+	background:#fff;
+	overflow:auto;
+}
+#m a{
 	display:block;
 	float:left;
 	margin:0.5em 1%;
@@ -42,89 +100,181 @@ a{
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
+}
+#au a,#v a{
+	display:block;
+	width:90%;
+	text-decoration:none;
+	text-align:center;
+	margin:0.6em auto;
+	padding:0.5em 0;
+	color:#303030;
+	background-color:#f2f2f2;
+	cursor:pointer;
+	font-size:0.9em;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+}
+.link a,input,#m a,#au a,#v a{
+	box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
-	box-sizing:border-box;
 }
 .sp{background-color:#ffffee;}
 </style>
 </head>
 <body>
-<!--<h4>导航</h4>-->
-<a href="http://tpms.mb.qq.com/?aid=site_navigation&cid=site_navigation_v3" class="sp">网址导航</a>
-<a href="http://m.ilxdh.com/" class="sp">龙轩导航</a>
-<a href="https://easysky.top/web/v.html">视频酷站</a>
-<a href="https://easysky.top/web/a.html">听歌导航</a>
-<a href="https://easysky.top/web/s.html">多搜索</a>
-<!--<h4>新闻资讯</h4>-->
-<a href="http://m.cankaoxiaoxi.com">参考消息</a>
-<a href="http://circle.html5.qq.com/node/?ch=90&_from=005">话题圈</a>
-<a href="http://m.caixin.com/m">财新网</a>
-<a href="http://user.guancha.cn/">风闻</a>
-<a href="http://www.yidianzixun.com">一点资讯</a>
-<!--<h4>网络书签</h4>-->
-<a href="http://www.360doc.cn/index.html" class="sp">Doc360</a>
-<a href="http://m.duwanjuan.cn/">读万卷</a>
-<a href="https://m.hupu.com/bbs/34">虎扑</a>
-<a href="http://m.zhihu.com" class="sp">知乎</a>
-<a href="http://m.guokr.com" class="sp">果壳网</a>
-<a href="http://i.jandan.net">煎蛋</a>
-<a href="http://www.qiushibaike.com">糗事百科</a>
-<a href="http://bbs.8080.net/forum.php" class="sp">极速社区</a>
-<a href="http://3g.xici.net">西祠胡同</a>
-<a href="https://bbs.tianya.cn/m/block.jsp">天涯论坛</a>
-<a href="http://m.weibo.cn">新浪微博</a>
-<a href="http://club.m.autohome.com.cn/bbs/forum-c-982-1.html">英朗论坛</a>
-<a href="http://bbs.ngacn.cc/thread.php?fid=-343809&rand=594">NGA汽车</a>
-<a href="http://bbs.221700.com/forum.php?mobile=2">丰县论坛</a>
-<a href="https://skycyf.gitee.io">个站1</a>
-<a href="https://easysky.github.io">个站2</a>
-<a href="https://easysky.top" class="sp">个站3</a>
-<a href="https://easysky.top/web/note/?q=cyf@easysky">随手记</a>
-<a href="https://m.gitee.com/skycyf">Gitee</a>
-<a href="http://github.com">Github</a>
-<a href="http://zh.m.wikihow.com/">WikiHow</a>
-<!--<h4>邮箱网盘软件应用</h4>-->
-<a href="https://w.mail.qq.com">QQ邮箱</a>
-<a href="http://html5.mail.10086.cn">139邮箱</a>
-<a href="http://pan.baidu.com">百度网盘</a>
-<a href="https://www.repaik.com/forum.php">睿派克</a>
-<a href="https://wap.shouji.com.cn/">手机乐园</a>
-<a href="http://bbs.zhiyoo.com/forum.php?mod=forum">智友论坛</a>
-<a href="https://www.v2ex.com">V2EX</a>
-<a href="https://www.autoahk.com/">智能热键</a>
-<a href="https://wyagd001.github.io/zh-cn/docs/AutoHotkey.htm" class="sp">AHK</a>
-<!--<h4>影音</h4>-->
-<a href="https://m.miguvideo.com/wap/resource/migu/live/live-list.jsp">咪咕直播</a>
-<a href="http://m.cnwav.com">手机铃声</a>
-<a href="https://douban.fm">豆瓣电台</a>
-<a href="http://fm.baidu.com">百度电台</a>
-<a href="https://music.liuzhijin.cn">音乐搜索</a>
-<a href="http://www.app-echo.com">echo回声</a>
-<a href="https://m.pingshu365.com">天天评书</a>
-<a href="https://v.html5.qq.com">QQ视频</a>
-<a href="http://m.8gdyhd.com">八哥电影</a>
-<!--<h4>购物商城</h4>-->
-<a href="http://m.suning.com" class="sp">苏宁易购</a>
-<a href="http://m.yhd.com/1">一号店</a>
-<a href="https://m.smzdm.com/">值得买</a>
-<!--<h4>学习工作</h4>-->
-<a href="http://m.tingroom.com" class="sp">听力室</a>
-<a href="http://m.tp230.cn">头牌英语</a>
-<a href="http://m.tingclass.net">听力课堂</a>
-<a href="http://www.tingclass.net/list-6242-1.html?mob">365听力</a>
-<a href="http://m.hujiang.com/en/?source=hjenglish">沪江英语</a>
-<a href="http://m.youdao.com">有道词典</a>
-<a href="http://m.dict.cn">海词词典</a>
-<a href="http://wap.iciba.com">爱词霸</a>
-<a href="http://bbs.hg707.com/forum.php?forumlist=1&mobile=2">化工707</a>
-<!--<h4>生活服务</h4>-->
-<a href="http://m.58.com/nj">58同城</a>
-<a href="http://3g.ganji.com/nj">赶集网</a>
-<a href="http://m.46644.com">46644</a>
-<a href="http://m.8684.cn/nanjing_bus" class="sp">南京公交</a>
-<a href="http://wap.js.10086.cn">江苏移动</a>
-<a href="https://ayao.net">阿尧</a>
-<a href="http://ucaskdoc.120.net/yyaq">用药安全</a>
+<div id="main">
+	<div class="link">
+		<a href="javascript:;" onclick="opendiv('v');">视频酷站</a><a href="javascript:;" onclick="opendiv('au');">听歌导航</a><a href="javascript:;" onclick="opendiv('m');">网址收藏</a>
+	</div>
+	<input type="text" id="search" class="forminput">
+	<div class="btn" onclick="s(1)">百度搜索</div>
+	<div class="btn" onclick="s(2)">必应搜索</div>
+	<div class="btn" onclick="s(3)">360 搜索</div>
+	<div class="btn" onclick="s(4)">搜狗搜索</div>
+</div>
+<div id="m">
+	<a href="http://tpms.mb.qq.com/?aid=site_navigation&cid=site_navigation_v3" class="sp">网址导航</a>
+	<a href="http://m.ilxdh.com/" class="sp">龙轩导航</a>
+	<!--<h4>新闻资讯</h4>-->
+	<a href="http://m.cankaoxiaoxi.com">参考消息</a>
+	<a href="http://circle.html5.qq.com/node/?ch=90&_from=005">话题圈</a>
+	<a href="http://m.caixin.com/m">财新网</a>
+	<a href="http://user.guancha.cn/">风闻</a>
+	<a href="http://www.yidianzixun.com">一点资讯</a>
+	<!--<h4>网络书签</h4>-->
+	<a href="http://www.360doc.cn/index.html" class="sp">Doc360</a>
+	<a href="http://m.duwanjuan.cn/">读万卷</a>
+	<a href="https://m.hupu.com/bbs/34">虎扑</a>
+	<a href="http://m.zhihu.com" class="sp">知乎</a>
+	<a href="http://m.guokr.com" class="sp">果壳网</a>
+	<a href="http://i.jandan.net">煎蛋</a>
+	<a href="http://www.qiushibaike.com">糗事百科</a>
+	<a href="http://bbs.8080.net/forum.php" class="sp">极速社区</a>
+	<a href="http://3g.xici.net">西祠胡同</a>
+	<a href="https://bbs.tianya.cn/m/block.jsp">天涯论坛</a>
+	<a href="http://m.weibo.cn">新浪微博</a>
+	<a href="http://club.m.autohome.com.cn/bbs/forum-c-982-1.html">英朗论坛</a>
+	<a href="http://bbs.ngacn.cc/thread.php?fid=-343809&rand=594">NGA汽车</a>
+	<a href="http://bbs.221700.com/forum.php?mobile=2">丰县论坛</a>
+	<a href="https://skycyf.gitee.io">个站1</a>
+	<a href="https://easysky.github.io">个站2</a>
+	<a href="https://easysky.top" class="sp">个站3</a>
+	<a href="https://easysky.top/web/note/?q=cyf@easysky">随手记</a>
+	<a href="https://m.gitee.com/skycyf">Gitee</a>
+	<a href="http://github.com">Github</a>
+	<a href="http://zh.m.wikihow.com/">WikiHow</a>
+	<!--<h4>邮箱网盘软件应用</h4>-->
+	<a href="https://w.mail.qq.com">QQ邮箱</a>
+	<a href="http://html5.mail.10086.cn">139邮箱</a>
+	<a href="http://pan.baidu.com">百度网盘</a>
+	<a href="https://www.repaik.com/forum.php">睿派克</a>
+	<a href="https://wap.shouji.com.cn/">手机乐园</a>
+	<a href="http://bbs.zhiyoo.com/forum.php?mod=forum">智友论坛</a>
+	<a href="https://www.v2ex.com">V2EX</a>
+	<a href="https://www.autoahk.com/">智能热键</a>
+	<a href="https://wyagd001.github.io/zh-cn/docs/AutoHotkey.htm" class="sp">AHK</a>
+	<!--<h4>影音</h4>-->
+	<a href="https://m.miguvideo.com/wap/resource/migu/live/live-list.jsp">咪咕直播</a>
+	<a href="http://m.cnwav.com">手机铃声</a>
+	<a href="https://douban.fm">豆瓣电台</a>
+	<a href="http://fm.baidu.com">百度电台</a>
+	<a href="https://music.liuzhijin.cn">音乐搜索</a>
+	<a href="http://www.app-echo.com">echo回声</a>
+	<a href="https://m.pingshu365.com">天天评书</a>
+	<a href="https://v.html5.qq.com">QQ视频</a>
+	<a href="http://m.8gdyhd.com">八哥电影</a>
+	<!--<h4>购物商城</h4>-->
+	<a href="http://m.suning.com" class="sp">苏宁易购</a>
+	<a href="http://m.yhd.com/1">一号店</a>
+	<a href="https://m.smzdm.com/">值得买</a>
+	<!--<h4>学习工作</h4>-->
+	<a href="http://m.tingroom.com" class="sp">听力室</a>
+	<a href="http://m.tp230.cn">头牌英语</a>
+	<a href="http://m.tingclass.net">听力课堂</a>
+	<a href="http://www.tingclass.net/list-6242-1.html?mob">365听力</a>
+	<a href="http://m.hujiang.com/en/?source=hjenglish">沪江英语</a>
+	<a href="http://m.youdao.com">有道词典</a>
+	<a href="http://m.dict.cn">海词词典</a>
+	<a href="http://wap.iciba.com">爱词霸</a>
+	<a href="http://bbs.hg707.com/forum.php?forumlist=1&mobile=2">化工707</a>
+	<!--<h4>生活服务</h4>-->
+	<a href="http://m.58.com/nj">58同城</a>
+	<a href="http://3g.ganji.com/nj">赶集网</a>
+	<a href="http://m.46644.com">46644</a>
+	<a href="http://m.8684.cn/nanjing_bus" class="sp">南京公交</a>
+	<a href="http://wap.js.10086.cn">江苏移动</a>
+	<a href="https://ayao.net">阿尧</a>
+	<a href="http://ucaskdoc.120.net/yyaq">用药安全</a>
+	<a href="javascript:;" onclick="closediv('m')">-- 关闭 --</a>
+</div>
+<div id="au">
+	<a href="http://m.kugou.com" target="_blank">酷狗音乐</a>
+	<a href="http://m.kuwo.cn" target="_blank">酷我音乐</a>
+	<a href="http://m.y.qq.com" target="_blank">QQ音乐</a>
+	<a href="http://music.taihe.com" target="_blank">千千音乐</a>
+	<a href="http://www.app-echo.com" target="_blank">echo回声</a>
+	<a href="http://m.yinyuetai.com" target="_blank">音悦台MV</a>
+	<a href="http://m.9ku.com" target="_blank">九酷音乐</a>
+	<a href="http://m.diyring.cc" target="_blank">酷铃铃声</a>
+	<a href="http://m.ik123.com" target="_blank">深港DJ</a>
+	<a href="http://sj.djyule.com" target="_blank">DJ音乐盒</a>
+	<a href="http://m.ximalaya.com/album-tag/music" target="_blank">喜马拉雅FM</a>
+	<a href="http://m.qingting.fm/categories/523" target="_blank">蜻蜓FM</a>
+	<a href="http://fm.baidu.com" target="_blank">百度随身听</a>
+	<a href="http://music.163.com" target="_blank">网易云音乐</a>
+	<a href="javascript:;" onclick="closediv('au');">-- 关闭 --</a>
+</div>
+<div id="v">
+	<a href="http://video.m.baidu.com" target="_blank">百度小视频</a>
+	<a href="http://www.youku.com" target="_blank">优酷</a>
+	<a href="http://m.le.com" target="_blank">乐视</a>
+	<a href="http://m.iqiyi.com" target="_blank">爱奇艺</a>
+	<a href="http://m.tv.sohu.com" target="_blank">搜狐视频</a>
+	<a href="http://m.mgtv.com/#/channel/home" target="_blank">芒果TV</a>
+	<a href="http://m.v.qq.com" target="_blank">腾讯视频</a>
+	<a href="http://m.pptv.com" target="_blank">PPTV</a>
+	<a href="http://vip.1905.com" target="_blank">1905影院</a>
+	<a href="http://m.baofeng.com" target="_blank">暴风影音</a>
+	<a href="http://www.tudou.com" target="_blank">土豆视频</a>
+	<a href="http://m.bilibili.com" target="_blank">哔哩哔哩</a>
+	<a href="http://m.douyu.com" target="_blank">斗鱼</a>
+	<a href="http://m.ku6.com" target="_blank">酷6视频</a>
+	<a href="http://www.yinyuetai.com" target="_blank">音悦台</a>
+	<a href="http://m.56.com" target="_blank">56视频</a>
+	<a href="javascript:;" onclick="closediv('v');">-- 关闭 --</a>
+</div>
+<script>
+function s(i){
+	var s1="",s2=document.getElementById("search").value;
+	switch(i)
+	{
+		case 1:
+			s1="https://wap.baidu.com";
+			window.location.href=(s2=="")?s1:(s1+"/s?word="+s2);
+			break;
+		case 2:
+			s1="http://m.cn.bing.com";
+			window.location.href=(s2=="")?s1:(s1+"/s?q="+s2);
+			break;
+		case 3:
+			s1="https://m.so.com";
+			window.location.href=(s2=="")?s1:(s1+"/s?q="+s2);
+			break;
+		case 4:
+			s1="https://wap.sogou.com";
+			window.location.href=(s2=="")?s1:(s1+"/web/searchList.jsp?keyword="+s2);
+			break;
+	}
+}
+function opendiv(id){
+	document.getElementById(id).style.display="block";
+}
+function closediv(id){
+	document.getElementById(id).style.display="none";
+}
+</script>
 </body>
 </html>
