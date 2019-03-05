@@ -21,13 +21,14 @@ body{
 #main{
 	position:absolute;
 	width:100%;
-	height:280px;
+	height:320px;
 	left:50%;
 	top:50%; 
 	margin-left:-50%;
-	margin-top:-180px;
+	margin-top:-220px;
 	text-align:center;
 	overflow:auto;
+	/*border:1px solid #f00;*/
 }
 .link{
 	width:100%;
@@ -210,6 +211,8 @@ input,#m a,#au a,#v a{
 	<div class="btn" onclick="s(2)">必应</div>
 	<div class="btn" onclick="s(3)">360</div>
 	<div class="btn" onclick="s(4)">搜狗</div>
+	<div class="btn" onclick="s(5)">Yandex</div>
+	<div class="btn" onclick="s(6)">秘迹</div>
 </div>
 <script>
 var f="";
@@ -232,6 +235,14 @@ function s(i){
 		case 4:
 			s1="https://wap.sogou.com";
 			window.location.href=(s2=="")?s1:(s1+"/web/searchList.jsp?keyword="+s2);
+			break;
+		case 5:
+			s1="https://m.yandex.com";
+			window.location.href=(s2=="")?s1:(s1+"/search/?text="+s2);
+			break;
+		case 6:
+			s1="https://mijisou.com";
+			window.location.href=(s2=="")?s1:(s1+"/?q="+s2);
 			break;
 	}
 }
