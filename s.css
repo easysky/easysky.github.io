@@ -1,0 +1,156 @@
+body{
+	background-color:#f2f2f2;
+	font-size:1.0em;
+	font-size:100%;
+	width:100%;
+	height:100%;
+	text-align:center;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+}
+#main{
+	position:absolute;
+	width:100%;
+	height:300px;
+	left:50%;
+	top:50%;
+	margin-left:-50%;
+	margin-top:-180px;
+	text-align:center;
+	overflow:auto;
+}
+#main2{
+	display:none;
+}
+#tit{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	background-color:#fff;
+	border-bottom:1px solid #080;
+}
+#left{
+	float:left;
+	width:125px;
+	/*background-color:#ff0;*/
+	text-align:center;
+}
+#center{
+	/*margin:0 100px 0 130px;*/
+	text-align:center;
+	/*background-color:#303030;*/
+}
+#right,#curr{
+	position:fixed;
+	display:none;
+	right:0;
+	top:0;
+	width:90px;
+	text-align:center;
+	background-color:#fff;
+}
+#left span{
+	display:inline-block;
+	height:30px;
+	line-height:30px;
+	/*font-weight:bold;*/
+	color:#f2f2f2;
+	/*background-color:#080;*/
+	background-color:#0a3b76;
+	padding:0 0.6em;
+	border-radius:5px;
+	cursor:pointer;
+}
+#right span,#box span,#curr span{
+	display:inline-block;
+	width:50px;
+	height:30px;
+	line-height:30px;
+	margin:0.1em;
+	padding:0 1em;
+	cursor:pointer;
+	color:#f2f2f2;
+	font-size:0.8em;
+	/*background-color:#080;*/
+	background-color:#0a3b76;
+	border-radius:5px;
+	white-space:nowrap;
+}
+#center input{
+	width:100%;
+	height:2.2em;
+	border:1px solid #aaa;
+	padding:0 0.5em;
+	vertical-align:center;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+#main input{
+	display:block;
+	width:96%;
+	height:2.3em;
+	border:1px solid #aaa;
+	font-size:1.3em;
+	margin:0 auto;
+	padding:0.1em 0.5em;
+	box-shadow:1px 1px 2px #aaa;
+	border-radius:5px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+#box{
+	text-align:center;
+	margin-top:1em;
+	line-height:3em;
+}
+#box span{
+	cursor:pointer;
+	color:#f2f2f2;
+	background-color:#080;
+	font-size:1.0em;
+	border-radius:5px;
+	white-space:nowrap;
+}
+#right span:hover,#curr span:hover,#box span:hover{
+	background-color:#800;
+}
+#nav{
+	display:none;
+	position:fixed;
+	right:20px;
+	top:0;
+	width:50px;
+	height:50px;
+	cursor:pointer;
+	width:0px;
+	height:0px;
+	border:20px solid #080;
+	border-top-color:#080;
+	border-bottom-color:transparent;
+	border-left-color:transparent;
+	border-right-color:transparent;
+}
+.fo{
+	position:absolute;
+	width:100%;
+	bottom:0;
+	font-size:0.7em;
+	color:#ccc;
+}
+.fo a{
+	color:#ccc;
+	text-decoration:none;
+}
+.fo a:hover{
+	text-decoration:underline;
+}
+iframe{
+	display:block;
+	overflow:auto;
+}
+@media screen and (min-width:980px){
+	#main input{width:980px;}
+}
