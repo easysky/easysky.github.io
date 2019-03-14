@@ -1,6 +1,10 @@
 var ua=/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)?1:0,ss=[[(ua?"m":"www")+".baidu.com","/s?word=","百度"],["cn.bing.com","/search?q=","必应"],[(ua?"m":"www")+".so.com","/s?q=","360"],[(ua?"wap":"www")+".sogou.com","/web"+(ua?"/searchlist.jsp?keyword=":"?query="),"搜狗"],[(ua?"m":"www")+".yandex.com","/search/?text=","Yandex"],[(ua?"m.":"")+"mijisou.com","/?q=","秘迹"]],skey=window.location.search,sik=getCookie();
 $(function(){
-	$("#left span").html($("h1").text());
+	if(ua){
+		$("#left").hide();
+	}else{
+		$("#left span").html($("h1").text());
+	}
 	$("#right").html($("#box").html());
 	var bflag=0;
 	if(skey!=""){
