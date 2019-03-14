@@ -32,7 +32,8 @@ $(function(){
 			window.location.href="http://"+ss[sik][0];
 		}else{
 			setCookie(sik);
-			window.location.href="http://"+window.location.host+"/?q="+skey;
+			window.location.href="/?q="+skey;
+			//window.location.href="http://"+window.location.host+"/?q="+skey;
 		}
 	});
 	$("#right span").click(function(){
@@ -51,7 +52,8 @@ function go(i){
 	skey=(i==0)?$("#main input").val():$("#center input").val();
 	if((event.keyCode==13)&&(skey!="")){
 		if(i==0){
-			window.location.href="http://"+window.location.host+"/?q="+skey;
+			window.location.href="/?q="+skey;
+			//window.location.href="http://"+window.location.host+"/?q="+skey;
 		}else{
 			$("#sse").attr("src","https://"+ss[sik][0]+ss[sik][1]+skey),$("#right span").css("background-color","#0a3b76"),$(this).css("background-color","#800"),$("#curr span").text(ss[sik][2]);
 		}
