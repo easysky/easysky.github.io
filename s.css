@@ -12,11 +12,11 @@ body{
 #main{
 	position:absolute;
 	width:100%;
-	height:300px;
+	height:250px;
 	left:50%;
 	top:50%;
 	margin-left:-50%;
-	margin-top:-180px;
+	margin-top:-130px;
 	text-align:center;
 	overflow:auto;
 }
@@ -35,7 +35,7 @@ body{
 	border-bottom:1px solid #080;
 }
 #left{
-	float:left;
+	/*float:left;*/
 	text-align:center;
 }
 #center{
@@ -44,42 +44,42 @@ body{
 	flex:1;
 	text-align:center;
 }
-#right{
+#right,#curr{
 	display:none;
-	padding:0 0.3em;
 	margin:0 0.3em;
 	text-align:center;
 }
 #curr{
 	display:block;
-	padding:0 0.3em;
-	margin:0 0.3em
-	text-align:center;
 }
 #left span{
 	display:inline-block;
 	height:30px;
 	line-height:30px;
 	color:#f2f2f2;
-	background-color:#0a3b76;
-	padding:0 0.5em;
+	background-color:#303030;
+	padding:0 1em;
 	margin:0 0.3em;
 	border-radius:5px;
 	cursor:pointer;
+	font-size:0.8em;
 }
 #right span,#box span,#curr span{
 	display:inline-block;
-	width:40px;
 	height:30px;
 	line-height:30px;
-	margin:0 0.1em;
-	padding:0 1em;
+	margin:0 0.2em;
+	padding:0 0.8em;
 	cursor:pointer;
 	color:#f2f2f2;
 	font-size:0.8em;
-	background-color:#0a3b76;
+	background-color:#303030;
 	border-radius:5px;
 	white-space:nowrap;
+}
+#box span{
+	height:40px;
+	line-height:40px;
 }
 #center input{
 	width:100%;
@@ -94,7 +94,7 @@ body{
 #main input{
 	display:block;
 	width:96%;
-	height:2.3em;
+	height:2.2em;
 	border:1px solid #aaa;
 	font-size:1.3em;
 	margin:0 auto;
@@ -112,13 +112,13 @@ body{
 #box span{
 	cursor:pointer;
 	color:#f2f2f2;
-	background-color:#0a3b76;
+	background-color:#303030;
 	font-size:1.0em;
 	border-radius:5px;
 	white-space:nowrap;
 }
-#right span:hover,#curr span:hover,#box span:hover{
-	background-color:#800;
+#left span:hover,#right span:hover,#curr span:hover,#box span:hover{
+	background-color:#080;
 }
 #nav{
 	display:none;
@@ -128,7 +128,7 @@ body{
 	width:100px;
 	height:10px;
 	cursor:pointer;
-	background-color:#0a3b76;
+	background-color:#080;
 	border-radius:0 0 5px 5px;
 }
 .fo{
