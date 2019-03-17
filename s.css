@@ -16,12 +16,9 @@ body{
 	left:50%;
 	top:50%;
 	margin-left:-50%;
-	margin-top:-130px;
+	margin-top:-150px;
 	text-align:center;
 	overflow:auto;
-}
-#main2{
-	display:none;
 }
 #tit{
 	width:100%;
@@ -34,39 +31,10 @@ body{
 	background-color:#fff;
 	border-bottom:1px solid #080;
 }
-#left{
-	text-align:center;
-}
-#center{
-	display:-webkit-flex;
-	display:flex;
-	flex:1;
-	text-align:center;
-}
-#right,#curr{
-	display:none;
-	margin:0 0.3em;
-	text-align:center;
-}
-#curr{
-	display:block;
-}
-#left span{
+#box span{
 	display:inline-block;
-	height:30px;
-	line-height:30px;
-	color:#f2f2f2;
-	background-color:#303030;
-	padding:0 1em;
-	margin:0 0.3em;
-	border-radius:5px;
-	cursor:pointer;
-	font-size:0.8em;
-}
-#right span,#box span,#curr span{
-	display:inline-block;
-	height:30px;
-	line-height:30px;
+	height:40px;
+	line-height:40px;
 	margin:0 0.2em;
 	padding:0 0.8em;
 	cursor:pointer;
@@ -75,20 +43,6 @@ body{
 	background-color:#303030;
 	border-radius:5px;
 	white-space:nowrap;
-}
-#box span{
-	height:40px;
-	line-height:40px;
-}
-#center input{
-	width:100%;
-	height:2.2em;
-	border:1px solid #aaa;
-	padding:0 0.5em;
-	vertical-align:center;
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
 }
 #main input{
 	display:block;
@@ -113,22 +67,11 @@ body{
 	color:#f2f2f2;
 	background-color:#303030;
 	font-size:1.0em;
-	border-radius:5px;
+	/*border-radius:5px;*/
 	white-space:nowrap;
 }
-#left span:hover,#right span:hover,#curr span:hover,#box span:hover{
+#box span:hover{
 	background-color:#080;
-}
-#nav{
-	display:none;
-	position:fixed;
-	left:0.8em;
-	top:0;
-	width:100px;
-	height:10px;
-	cursor:pointer;
-	background-color:#080;
-	border-radius:0 0 5px 5px;
 }
 .fo{
 	position:absolute;
@@ -144,12 +87,6 @@ body{
 .fo a:hover{
 	text-decoration:underline;
 }
-iframe{
-	display:block;
-	overflow:auto;
-}
 @media screen and (min-width:980px){
 	#main input{width:980px;}
-	#curr{display:none;}
-	#right{display:block;}
 }

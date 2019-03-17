@@ -1,105 +1,47 @@
-var ua=/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)?1:0,ss=[[(ua?"m":"www")+".baidu.com","/s?word=","百度"],["cn.bing.com","/search?q=","必应"],[(ua?"m":"www")+".so.com","/s?q=","360"],[(ua?"wap":"www")+".sogou.com","/web"+(ua?"/searchlist.jsp?keyword=":"?query="),"搜狗"],[(ua?"m.":"")+"mijisou.com","/?q=","秘迹"]],sk=window.location.search,si=getCookie("e"),isfs=0;
+var ua=/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)?1:0,ss=[[(ua?"m":"www")+".baidu.com","/s?word=","百度"],["cn.bing.com","/search?q=","必应"],[(ua?"m":"www")+".so.com","/s?q=","360"],[(ua?"wap":"www")+".sogou.com","/web"+(ua?"/searchlist.jsp?keyword=":"?query="),"搜狗"],[(ua?"m.":"")+"mijisou.com","/?q=","秘迹"]],sk=window.location.search,si=0;
 $(function(){
-	var nflag=0,bflag=0,str="";
-	$("#main h2,#left span").text($("title").text());
+	var str="";
+	$("#main h2").text($("title").text());
 	for (var i=0;i<ss.length;i++){
 		str+="<span>"+ss[i][2]+"</span>";
 	}
-	$("#box,#right").html(str);
-	if(ua){
-		$("#left").hide();
-		$("#center").css("margin-left","0.5em");
-	}
+	$("#box").html(str);
 	if(sk!=""){
-		sk=decodeURI(sk.substring(1).split("=")[1]);
-		if(sk!=""){
-			bflag=1;
+		var arrStr=sg(sk);
+		si=arrStr["s"],sk=arrStr["q"];
+		if(typeof(si)=="undefined"||/^[0-4]{1}$/g.test(si)==false){
+			si=0;
+		}
+		if(typeof(sk)=="undefined"){
+			sk="";
 		}
 	}
-	if(bflag){
-		setPos();
-		$("#center input").attr("value",sk);
-		$("#sse").attr("src","https://"+ss[si][0]+ss[si][1]+sk);
-		$("#main").hide();
-		$("#main2").show();
-		$("#curr span").text(ss[si][2]);
-		$("#right span").eq(si).css("background-color","#080");
-	}else{
-		$("#box span").eq(si).css("background-color","#080");
-		$("#main2").hide(),$("#main").show();
+	$("#box span").eq(si).css("background-color","#080");
+	$("input").val(sk);
+	if(sk!=""){
+		$("title").text("即将跳转到"+ss[si][2]+"搜索 - "+$("title").text());
+		setTimeout("jump()","2000");
 	}
-	$("#curr").click(function(){
-		$(this).hide();
-		$("#right").show();
-		nflag=1;
-	});
 	$("#box span").click(function(){
-		si=$(this).index(),sk=$("#main input").val();
-		if(sk==""){
-			window.location.href="http://"+ss[si][0];
-		}else{
-			setCookie(si);
-			window.location.href="/?q="+sk;
-		}
-	});
-	$("#right span").click(function(){
-		if($(this).index()!=si){
-			si=$(this).index(),sk=$("#center input").val();
-			$("#sse").attr("src","https://"+ss[si][0]+ss[si][1]+sk);
-			$("#right span").css("background-color","#303030");
-			$(this).css("background-color","#080");
-			$("#curr span").text(ss[si][2]);
-			setCookie(si);
-		}
-		if(nflag==1){
-			$("#right").hide();
-			$("#curr").show();
-			nflag=0;
-		}
-	});
-	$("#left").click(function(){
-		$("#nav").show();
-		$("#tit").hide();
-		$("#sse").css("height",$(window).height());
-		isfs=1;
-	});
-	$("#nav").click(function(){
-		$("#tit").show();
-		$("#nav").hide();
-		$("#sse").css("height",$(window).height()-50);
-		isfs=0;
+		si=$(this).index(),sk=$("input").val();
+		window.location.href="https://"+ss[si][0]+((sk=="")?"":(ss[si][1]+sk));
 	});
 });
-function go(i){
-	sk=(i==0)?$("#main input").val():$("#center input").val();
-	if((event.keyCode==13)&&(sk!="")){
-		if(i==0){
-			window.location.href="/?q="+sk;
-		}else{
-			$("#sse").attr("src","https://"+ss[si][0]+ss[si][1]+sk);
-		}
+function go(){
+	sk=$("input").val();
+	if(event.keyCode==13&&sk!=""){
+		jump();
 	}
 }
-$(window).resize(function(){
-	setPos();
-});
-function setPos(){
-	if(isfs){
-		$("#sse").css("height",$(window).height());
-	}else{
-		$("#sse").css("height",$(window).height()-50);
-	}
+function jump(){
+	window.location.href="https://"+ss[si][0]+ss[si][1]+sk;
 }
-function setCookie(value){
-	var Days=300,exp=new Date();
-	exp.setTime(exp.getTime()+Days*24*60*60*1000);
-	document.cookie="e="+value+";expires="+exp.toGMTString();
-}
-function getCookie(objName){
-	var arrStr=document.cookie.split(";");
-	for (var i=0;i<arrStr.length;i++){
-		var temp=arrStr[i].split("=");
-		if (temp[0]==objName) return unescape(temp[1]);
+function sg(str){
+	str=str.substring(1);
+	var arr=str.split("&"),obj=[];
+	for (var i=0;i<arr.length;i++){
+		var temp=arr[i].split("=");
+		obj[temp[0]]=temp[1];
 	}
-	return 0;
+	return obj;
 }
