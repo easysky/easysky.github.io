@@ -14,13 +14,15 @@ $(function(){
 		}
 		if(typeof(sk)=="undefined"){
 			sk="";
+		}else{
+			sk=decodeURI(sk);
 		}
 	}
 	$("#box span").eq(si).css("background-color","#080");
 	$("input").val(sk);
 	setpos();
 	if(sk!=""){
-		$("title").text("即将跳转到"+ss[si][2]+"搜索 - "+$("title").text());
+		$("title").text(ss[si][2]+"搜索 - "+$("title").text());
 		setTimeout("jump()","2500");
 	}
 	$("#box span").click(function(){
