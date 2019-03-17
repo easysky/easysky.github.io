@@ -67,7 +67,6 @@ body{
 	color:#f2f2f2;
 	background-color:#303030;
 	font-size:1.0em;
-	/*border-radius:5px;*/
 	white-space:nowrap;
 }
 #box span:hover{
@@ -85,6 +84,26 @@ body{
 	text-decoration:none;
 }
 .fo a:hover{
+	text-decoration:underline;
+}
+#info{
+	display:none;
+	position:fixed;
+	padding:0.5em 2em 0.5em 0;
+	width:450px;
+	line-height:1.8em;
+	color:#303030;
+	background-color:#fff;
+	border:1px solid #aaa;
+	font-size:0.8em;
+	text-align:left;
+	border-radius:5px;
+	box-shadow:2px 2px 3px #aaa;
+}
+.unl{
+	color:#f00;
+	margin:0 0.3em;
+	font-weight:bold;
 	text-decoration:underline;
 }
 @media screen and (min-width:980px){
