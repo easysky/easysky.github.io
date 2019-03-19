@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,maximum-scale=1">
+<title>搜@Easysky</title>
+<link rel="icon" href="fav.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="fav.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="s.css">
+<script src="jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="s.js"></script>
+</head>
+<body>
+<div id="main">
+	<h2></h2>
+	<div class="loading">
+		<span></span><span></span><span></span><span></span><span></span>
+	</div>
+	<input type="text" placeholder="搜索关键词" onkeyup="go()";>
+	<div id="box"></div>
+	<div class="fo">
+		<a href="https://easysky.github.io" target="_blank">博客</a> | <a href="https://easysky.github.io/web/stone" target="_blank">漫画</a> | <a href="https://easysky.github.io/web/history" target="_blank">历史</a> | <a href="javascript:;">说明</a> | <a href="mailto:cyuffei@foxmail.com">Cui</a> @ 2019
+	</div>
+</div>
+<div id="info">
+	<ol>
+	<li>目前支持百度(0)、必应(1)、360(2)、搜狗(3)、秘迹(4)、Yandex(5)、谷歌(6)、MySearch(7)、咕咯鸡(8)等搜索引擎，括号内数字为搜索引擎代号；</li>
+	<li>支持 URL 直接搜索，参数为:<br><span class="unl">?s={0}&q={keyword}</span><br>其中 s 指定搜索引擎代号，q 指定搜索关键字；</li>
+	<li>不指定搜索引擎时默认使用<span class="unl">百度搜索</span>，即<span class="unl">s=0</span>；</li>
+	<li>指定搜索引擎与关键词时，如无操作， 2.5 秒后将自动进入搜索结果页面；页面跳转前可随时切换搜索引擎；点击搜索框可停止跳转。</li>
+	</ol>
+</div>
+</body>
+</html>
