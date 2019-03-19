@@ -1,4 +1,7 @@
 $(function(){
+	if ((window.location.protocol!="https:")){
+	window.location=window.location.toString().replace(/^http:/, "https:");
+}
 	var h=location.search.toLowerCase().substr(1),b=0,n="Journey & Thinking",s,t;
 	$("a").attr("target","_blank");
 	if(h!=""&&h.length>=2&&$("#"+h).length>0){
