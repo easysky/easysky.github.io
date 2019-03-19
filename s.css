@@ -83,13 +83,16 @@ input:focus{
 	font-size:0.8em;
 	text-align:left;
 	border-radius:5px;
-	box-shadow:1px 1px 2px #aaa;
+	box-shadow:1px 1px 1px #aaa;
 }
 .unl{
-	color:#f00;
+	color:#00f;
 	margin:0 0.3em;
+	padding:0 0.2em;
+	border:1px solid #aaa;
 	font-weight:bold;
-	text-decoration:underline;
+	text-decoration:none;
+	background-color:#eee;
 }
 h2{
 	height:20px;
