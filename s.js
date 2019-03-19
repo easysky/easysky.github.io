@@ -1,11 +1,11 @@
-var ua=/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)?1:0,ss=[[(ua?"m":"www")+".baidu.com","/s?word=","百度"],["cn.bing.com","/search?q=","必应"],[(ua?"m":"www")+".so.com","/s?q=","360"],[(ua?"wap":"www")+".sogou.com","/web"+(ua?"/searchlist.jsp?keyword=":"?query="),"搜狗"],[(ua?"m.":"")+"mijisou.com","/?q=","秘迹"],["yandex.com","/search/?text=","Yandex"],["vip.kuaimen.bid","/search?&q=","谷歌"]],sk=window.location.search,si=0,yid;
+var ua=/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)?1:0,ss=[[(ua?"m":"www")+".baidu.com","/s?word=","百度"],["cn.bing.com","/search?q=","必应"],[(ua?"m":"www")+".so.com","/s?q=","360"],[(ua?"wap":"www")+".sogou.com","/web"+(ua?"/searchlist.jsp?keyword=":"?query="),"搜狗"],[(ua?"m.":"")+"mijisou.com","/?q=","秘迹"],["yandex.com","/search/?text=","Yandex"],["vip.kuaimen.bid","/search?&q=","谷歌"]],sk=window.location.search,si=0,yid=0,tit=$("title").text();
 $(function(){
 	var str="";
 	for (var i=0;i<ss.length;i++){
 		str+="<span>"+ss[i][2]+"</span>";
 	}
 	$("#box").html(str);
-	$("#main h2").text($("title").text());
+	$("#main h2").text(tit);
 	if(sk!=""){
 		var arrStr=sg(sk);
 		si=arrStr["s"],sk=arrStr["q"];
@@ -17,18 +17,19 @@ $(function(){
 		}else{
 			sk=decodeURI(sk);
 		}
-		$(".loading").show();
-		$("#main h2").hide();
+		$(".loading span").css("background",["red","#f18000","#8600ff","#080","#4969c7","black"][parseInt(Math.random()*6,10)]);
+		$(".loading,#main h2").toggle();
 	}
 	$("#box span").eq(si).css("background-color","#080");
 	$("input").val(sk);
-	$("title").text(ss[si][2]+"搜索 - "+$("title").text());
+	$("title").text(ss[si][2]+"搜索 - "+tit);
 	if(sk!=""){
 		yid=setTimeout("jump()","2500");
 	}
 	$("#box span").click(function(){
 		si=$(this).index(),sk=$("input").val();
 		window.location.href="https://"+ss[si][0]+((sk=="")?"":(ss[si][1]+sk));
+		$("title").text(ss[si][2]+"搜索 - "+tit);
 	});
 	$(".fo a:eq(3)").click(function(){
 		$("#info").toggle(300);

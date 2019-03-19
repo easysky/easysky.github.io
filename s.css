@@ -20,12 +20,6 @@ body{
 	text-align:center;
 	overflow:auto;
 }
-#tit{
-	width:100%;
-	height:50px;
-	background-color:#fff;
-	border-bottom:1px solid #080;
-}
 input{
 	display:block;
 	width:96%;
@@ -97,20 +91,25 @@ input:focus{
 	font-weight:bold;
 	text-decoration:underline;
 }
+h2{
+	height:20px;
+	margin:0 auto;
+	margin:30px 0;
+}
 .loading{
 	display:none;
 	width:100%;
-	height:15px;
+	height:20px;
 	margin:0 auto;
 	margin:30px 0;
 	text-align:center;
 }
 .loading span{
 	display:inline-block;
-	width:15px;
+	width:20px;
 	height:100%;
 	margin-right:5px;
-	border-radius:50%;
+	/*border-radius:50%;*/
 	background:#080;
 	-webkit-animation:load 1.04s ease infinite;
 }
