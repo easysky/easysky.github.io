@@ -1,0 +1,7 @@
+time:2018/11/09 23:04:36
+keys:怀旧,故事,情感,人生
+<txt>
+多希望<br />有一天<br />突然惊醒<br />发现自己在学校的一节课上睡着了<br />现在经历的一切都只是一场梦<br />
+桌上满是口水<br />告诉同桌<br />说做了个好长的梦<br />同桌骂句白痴<br />说赶紧好好听课<br />
+转过头<br />看着窗外的操场<br />一切都那么熟悉<br />一切还充满希望<br />
+<audio autoplay="autoplay" controls="controls" loop="loop" preload="none"><source src="http://music.163.com/song/media/outer/url?id=379785.mp3"></source></audio>
