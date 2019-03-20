@@ -1,7 +1,4 @@
-if ((window.location.protocol!="https:")){
-	window.location=window.location.toString().replace(/^http:/, "https:");
-} 
-var ua=/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)?1:0,ss=[[(ua?"m":"www")+".baidu.com","/s?word=","百度"],["cn.bing.com","/search?q=","必应"],[(ua?"m":"www")+".so.com","/s?q=","360"],[(ua?"wap":"www")+".sogou.com","/web"+(ua?"/searchlist.jsp?keyword=":"?query="),"搜狗"],[(ua?"m.":"")+"mijisou.com","/?q=","秘迹"],["yandex.com","/search/?text=","Yandex"],["vip.kuaimen.bid","/search?&q=","谷歌"],["search.mysearch.com","/web?q=","MySearch"],["gugeji.com","/search?&q=","咕咯鸡"]],sk=window.location.search,si=0,yid=0,tit=$("title").text();
+var ua=/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)?1:0,ss=[[(ua?"m":"www")+".baidu.com","/s?word=","百度"],["cn.bing.com","/search?q=","必应"],[(ua?"m":"www")+".so.com","/s?q=","360"],[(ua?"wap":"www")+".sogou.com","/web"+(ua?"/searchlist.jsp?keyword=":"?query="),"搜狗"],[(ua?"m.":"")+"mijisou.com","/?q=","秘迹"],["yandex.com","/search/?text=","Yandex"],["vip.kuaimen.bid","/search?&q=","谷歌"],["search.mysearch.com","/web?q=","MySearch"],["gugeji.com","/search?&q=","咕咯鸡"]],sk=window.location.search,si=0,yid=-1,tit=$("title").text();
 $(function(){
 	var str="";
 	for (var i=0;i<ss.length;i++){
@@ -40,20 +37,52 @@ $(function(){
 	$("#info").click(function(){
 		$(this).hide(300);
 	});
+	//$("#tip,#info").click(function(){
+	//	$("#info,#tip").toggle(300);
+	//});
 	$("input").click(function(){
+		stop();
+	});
+});
+$(document).keydown(function(event){
+	if((!$("input").is(":focus"))&&(event.keyCode==37||event.keyCode==39)){
+		stop();
+		$("#box span").eq(si).css("background-color","#303030");
+		var j=(event.keyCode==37)?(si-1):(si+1);
+		si=(j<0)?ss.length-1:((j>ss.length-1)?0:j);
+		$("#box span").eq(si).css("background-color","#080");
+		$("title").text(ss[si][2]+"搜索 - "+tit);
+	}
+	if(event.keyCode==27){
+		stop();
+		if($("input").is(":focus")){
+			$("input").blur();
+		}else{
+			$("input").focus();
+		}
+	}
+	if(event.keyCode==13){
+		sk=$("input").val();
+		if(sk!=""){
+			jump();
+			$(".loading,#main h2").toggle();
+		}else{
+			$("input").focus();
+		}
+	}
+	if(event.keyCode==9){
+		return false;
+	}
+});
+function jump(){
+	window.location.href="https://"+ss[si][0]+ss[si][1]+sk;
+}
+function stop(){
+	if(yid!=-1){
 		clearTimeout(yid);
 		$(".loading").hide();
 		$("#main h2").show();
-	});
-});
-function go(){
-	sk=$("input").val();
-	if(event.keyCode==13&&sk!=""){
-		jump();
 	}
-}
-function jump(){
-	window.location.href="https://"+ss[si][0]+ss[si][1]+sk;
 }
 function sg(str){
 	str=str.substring(1);
