@@ -1,3 +1,6 @@
+if ((window.location.protocol!="https:")){
+		window.location=window.location.toString().replace(/^http:/, "https:");
+}
 var ua = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 1 : 0,
 	ss = [
 		[(ua ? "m" : "www") + ".baidu.com", "/s?word=", "百度"],
