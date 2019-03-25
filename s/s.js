@@ -1,6 +1,3 @@
-if ((window.location.protocol!="https:")){
-	window.location=window.location.toString().replace(/^http:/, "https:");
-}
 var ua = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 1 : 0,
 	ss = [
 		[(ua ? "m" : "www") + ".baidu.com", "/s?word=", "百度"],
@@ -18,6 +15,8 @@ var ua = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 1 :
 	tit = $("title").text();
 $(function() {
 	if (sk != "" && /^\?s=[0-7]{1}&q=[^\s]+$/g.test(sk)) {
+		$("#mian").hide();
+		$("body").html("<p>搜索结果加载中，请稍候……</p>");
 		var w = sk.match(/^\?s=([0-7]{1})&q=([^\s]+)$/);
 		si = w[1], sk = w[2], jump();
 		return;
