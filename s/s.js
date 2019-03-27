@@ -1,5 +1,5 @@
 if ((window.location.protocol!="https:")){
-		window.location=window.location.toString().replace(/^http:/, "https:");
+	window.location=window.location.toString().replace(/^http:/, "https:");
 }
 var ua = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 1 : 0,
 	ss = [
@@ -19,9 +19,9 @@ var ua = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 1 :
 $(function() {
 	if (sk != "" && /^\?s=[0-7]{1}&q=[^\s]+$/g.test(sk)) {
 		$("#mian").hide();
-		$("body").html("<p>搜索结果加载中，请稍候……</p>");
 		var w = sk.match(/^\?s=([0-7]{1})&q=([^\s]+)$/);
 		si = w[1], sk = w[2], jump();
+		$("body").html("<p>「" + ss[si][2] + "」搜索结果加载中，请稍候……</p>");
 		return;
 	}
 	var str = "";
