@@ -76,7 +76,7 @@ $(document).keydown(function(event) {
 		stop();
 		$("#box span").eq(si).css({
 			"color": "#303030",
-			"background-color": "Transparent"
+			"background-color": "#fafafa"
 		});
 		var j = (event.keyCode == 37) ? (si - 1) : (si + 1);
 		si = (j < 0) ? ss.length - 1 : ((j > ss.length - 1) ? 0 : j);
