@@ -1,28 +1,24 @@
 body {
+	display:-webkit-flex;
+	display:flex;
+	min-height:80vh;
 	background-color:#f2f2f2;
 	font-size:1.0em;
 	font-size:100%;
-	width:100%;
-	height:100%;
 	text-align:center;
 	padding:0;
 	margin:0;
 	overflow:hidden;
 }
 #main {
-	position:absolute;
-	width:100%;
-	height:230px;
-	left:50%;
-	top:50%;
-	margin-left:-50%;
-	margin-top:-150px;
+	margin:auto;
+	width:98%;
 	text-align:center;
 	overflow:auto;
 }
 input {
 	display:block;
-	width:96%;
+	width:100%;
 	border:1px solid #aaa;
 	font-size:1em;
 	margin:0 auto;
@@ -37,29 +33,27 @@ input:focus {
 #box {
 	text-align:center;
 	margin-top:1em;
-	line-height:2.8em;
 	white-space:normal;
 }
 #box span {
 	display:inline-block;
 	cursor:pointer;
-	height:30px;
-	line-height:30px;
-	margin:0 0.2em;
-	padding:0 0.8em;
+	margin:0.4em 0.2em;
+	padding:0.2em 0.8em;
 	color:#303030;
-	border:1px solid #aaa;
+	background-color: #fafafa;
 	white-space:nowrap;
 	border-radius:3px;
 }
 #box span:hover {
-	color:#f2f2f2;
-	background-color:#080;
+	color:#f2f2f2 !important;
+	background-color:#080 !important;
 }
 .fo {
 	position:fixed;
 	width:100%;
-	bottom:1em;
+	left:0;
+	bottom:0.8em;
 	font-size:0.85em;
 	color:#aaa;
 }
@@ -118,8 +112,6 @@ h2 {
 	width:20px;
 	height:100%;
 	margin-right:5px;
-	/*border-radius:50%;*/
-	/*background:#080;*/
 	-webkit-animation:load 1.04s ease infinite;
 }
 .loading span:last-child {
@@ -149,7 +141,7 @@ h2 {
 	-webkit-animation-delay:0.65s;
 }
 @media screen and (min-width:980px) {
-	input {
+	#main {
 		width:980px;
 	}
 	ol {
