@@ -1,6 +1,3 @@
-if ((window.location.protocol!="https:")){
-	window.location=window.location.toString().replace(/^http:/, "https:");
-}
 var ua = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? 1 : 0,
 	ss = [
 		[(ua ? "m" : "www") + ".baidu.com", "/s?word=", "百度"],
@@ -29,7 +26,10 @@ $(function() {
 		str += "<span>" + ss[i][2] + "</span>";
 	}
 	$("#box").html(str);
-	$("#main h2").text(tit);
+	$("#main h2 span:eq(0)").css("color", "#4585fc");
+	$("#main h2 span:eq(1)").css("color", "#ea442f");
+	$("#main h2 span:eq(2)").css("color", "#febb02");
+	$("#main h2 span:eq(3)").css("color", "#36a851");
 	if (sk != "") {
 		var arrStr = sg(sk);
 		si = arrStr["s"], sk = arrStr["q"];
@@ -44,7 +44,10 @@ $(function() {
 		$(".loading span").css("background", ["red", "#f18000", "#8600ff", "#080", "#4969c7", "black"][parseInt(Math.random() * 6, 10)]);
 		$(".loading,#main h2").toggle();
 	}
-	$("#box span").eq(si).css("background-color", "#080");
+	$("#box span").eq(si).css({
+		"color": "#f2f2f2",
+		"background-color": "#4969c7"
+	});
 	$("input").val(sk);
 	$("title").text(ss[si][2] + "搜索 - " + tit);
 	if (sk != "") {
@@ -68,10 +71,16 @@ $(function() {
 $(document).keydown(function(event) {
 	if ((!$("input").is(":focus")) && (event.keyCode == 37 || event.keyCode == 39)) {
 		stop();
-		$("#box span").eq(si).css("background-color", "#303030");
+		$("#box span").eq(si).css({
+			"color": "#303030",
+			"background-color": "Transparent"
+		});
 		var j = (event.keyCode == 37) ? (si - 1) : (si + 1);
 		si = (j < 0) ? ss.length - 1 : ((j > ss.length - 1) ? 0 : j);
-		$("#box span").eq(si).css("background-color", "#080");
+		$("#box span").eq(si).css({
+			"color": "#f2f2f2",
+			"background-color": "#4969c7"
+		});
 		$("title").text(ss[si][2] + "搜索 - " + tit);
 	}
 	if (event.keyCode == 27) {
