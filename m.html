@@ -6,30 +6,26 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,maximum-scale=1">
 <title>我的主页</title>
 <style>
-body{
+body {
+	display:-webkit-flex;
+	display:flex;
+	min-height:100vh;
 	background-color:#f2f2f2;
 	font-size:1.0em;
 	font-size:100%;
 	line-height:1.5;
-	width:100%;
-	height:100%;
 	background:#f2f2f2;
 	text-align:center;
 	padding:0;
-	margin:1% 0 1% 1%;
+	margin:0;
 }
-#main{
-	position:absolute;
+#main {
 	width:100%;
-	height:110px;
-	left:50%;
-	top:50%; 
-	margin-left:-50%;
-	margin-top:-60px;
+	margin:auto;
 	text-align:center;
 	overflow:auto;
 }
-#box{
+#box {
 	text-align:left;
 	width:95%;
 	margin:0 auto;
@@ -40,7 +36,7 @@ body{
 	align-items:center;
 	background-color:#fff;
 }
-#box div{
+#box div {
 	width:70px;
 	text-align:center;
 	color:#f2f2f2;
@@ -49,48 +45,47 @@ body{
 	cursor:pointer;
 	padding:0.4em 0.5em;
 }
-input{
+input {
 	flex:1;
 	width:90%;
 	border:none;
 	font-size:1.1em;
 	padding:0.2em 0.5em;
 }
-input:focus{
+input:focus {
 	outline:none;
 }
-.link{
+.link {
 	width:100%;
 	text-align:center;
 	margin:1.2em 0;
 }
-.link a{
+.link a {
 	display:inline-block;
 	color:#303030;
-	margin:0 1em;
-	padding:0.1em 0.5em;
+	margin:0 0.6em;
+	padding:0.1em 0.8em;
 	font-size:1.0em;
 	text-decoration:none;
-	background-color:#DDD;
-	border:1px solid #ccc;
+	box-shadow:1px 1px 2px #aaa;
+	border-radius:5px;
 }
-.link a:hover{
+.link a:hover {
 	color:#f2f2f2;
 	background-color:#4969c7;
-	text-decoration:none;
 }
-#m,#au,#v{
+#m, #au, #v {
 	display:none;
 	width:97%;
 	margin:0 auto;
 }
-#m a,#au a,#v a{
+#m a, #au a, #v a {
 	display:inline-block;
 	margin:0.2em 0.5%;
 	width:22%;
 	height:2.5em;
 	line-height:2.5em;
-	border:1px solid #aaa;
+	border:1px solid #ddd;
 	text-align:center;
 	font-size:0.8em;
 	text-decoration:none;
@@ -103,12 +98,19 @@ input:focus{
 	-moz-border-radius:5px;
 	border-radius:5px;
 }
-input,#m a,#au a,#v a,#box{
+input, #m a, #au a, #v a, #box {
 	box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 }
-.sp{background-color:#ffffee;}
+.sp {
+	background-color:#ffffee;
+}
+@media screen and (min-width:980px) {
+	#box, #m, #au, #v {
+		width:980px;
+	}
+}
 </style>
 </head>
 <body>
@@ -222,28 +224,25 @@ input,#m a,#au a,#v a,#box{
 	</div>
 </div>
 <script>
-var f="";
-function go(i){
-	var sk=document.getElementById("stxt").value;
-	if(sk!=""){
-		if(!i||(i&&event.keyCode==13)){
-			window.location.href="https://easysky.top/?q="+sk;
+var f = "";
+function go(i) {
+	var sk = document.getElementById("stxt").value;
+	if (sk != "") {
+		if (!i || (i && event.keyCode == 13)) {
+			window.location.href = "https://easysky.top/?q=" + sk;
 		}
 	}
 }
-function switchdiv(id){
-	var h1=document.getElementById(id);
-	var h2=document.getElementById("main");
-	if(f!=""&&id!=f){
-		document.getElementById(f).style.display="none";
+function switchdiv(id) {
+	var curr = document.getElementById(id);
+	if (f != "" && id != f) {
+		document.getElementById(f).style.display = "none";
 	}
-	if(h1.style.display=="block"){
-		h1.style.display="none";
-		h2.style.cssText="height:110px;top:50%;margin-top:-60px;";
-	}else{
-		h1.style.display="block";
-		h2.style.cssText="height:100%;top:0;margin-top:0;";
-		f=id;
+	if (curr.style.display == "block") {
+		curr.style.display = "none";
+	} else {
+		curr.style.display = "block";
+		f = id;
 	}
 }
 </script>
