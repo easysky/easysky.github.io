@@ -9,7 +9,7 @@
 body {
 	display:-webkit-flex;
 	display:flex;
-	min-height:100vh;
+	height:80vh;
 	background-color:#f2f2f2;
 	font-size:1.0em;
 	font-size:100%;
@@ -37,13 +37,12 @@ body {
 	background-color:#fff;
 }
 #box div {
-	width:70px;
 	text-align:center;
 	color:#f2f2f2;
 	background-color:#4969c7;
 	font-size:1em;
 	cursor:pointer;
-	padding:0.4em 0.5em;
+	padding:0.4em 0.6em;
 }
 input {
 	flex:1;
@@ -54,6 +53,19 @@ input {
 }
 input:focus {
 	outline:none;
+}
+.clear {
+	display: none;
+	float:right;
+	margin-right: 0.6em;
+	color:#4969c7;
+	text-decoration: none;
+}
+input::-ms-clear {
+	display: none;
+}
+input:valid + .clear {
+	display: inline;
 }
 .link {
 	width:100%;
@@ -70,7 +82,7 @@ input:focus {
 	box-shadow:1px 1px 2px #aaa;
 	border-radius:5px;
 }
-.link a:hover {
+.link a:hover, #nav span:hover {
 	color:#f2f2f2;
 	background-color:#4969c7;
 }
@@ -103,6 +115,29 @@ input, #m a, #au a, #v a, #box {
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 }
+#nav {
+	display:none;
+	position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+	text-align:center;
+	filter: alpha(opacity=95);
+	-moz-opacity:0.95;
+	opacity: 0.95;
+}
+#nav span {
+	display:block;
+	margin:0.6em 3%;
+	padding:0.4em 1em;
+	width:80px;
+	box-shadow:1px 1px 2px #aaa;
+	border-radius:5px;
+	background-color:#f2f2f2;
+	cursor:pointer;
+}
 .sp {
 	background-color:#ffffee;
 }
@@ -116,18 +151,18 @@ input, #m a, #au a, #v a, #box {
 <body>
 <div id="main">
 	<div id="box">
-		<input type="text" id="stxt" placeholder="搜索关键词" onkeyup="go(1);">
+		<div id="tit" onClick="shownav(1);">随机</div>
+		<input type="text" id="stxt" placeholder="搜索关键词" onkeyup="go(1);" required><a href="javascript:;" onClick="clearkey();" class="clear">&#10005;</a>
 		<div onClick="go(0);">搜索</div>
 	</div>
 	<div class="link">
-		<a href="http://m.ilxdh.com/" target="_blank">龙轩</a><a href="javascript:;" onclick="switchdiv('v');">视频</a><a href="javascript:;" onclick="switchdiv('au');">听歌</a><a href="javascript:;" onclick="switchdiv('m');">网址</a>
+		<a href="http://m.ilxdh.com/">龙轩</a><a href="javascript:;" onclick="switchdiv('v');">视频</a><a href="javascript:;" onclick="switchdiv('au');">听歌</a><a href="javascript:;" onclick="switchdiv('m');">网址</a>
 	</div>
 	<div id="m">
 		<a href="http://tpms.mb.qq.com/?aid=site_navigation&cid=site_navigation_v3" class="sp">网址导航</a>
 		<a href="http://m.ilxdh.com/" class="sp">龙轩导航</a>
 		<a href="http://m.cankaoxiaoxi.com">参考消息</a>
 		<a href="http://circle.html5.qq.com/node/?ch=90&_from=005">话题圈</a>
-		<a href="http://m.caixin.com/m">财新网</a>
 		<a href="http://user.guancha.cn/">风闻</a>
 		<a href="http://www.yidianzixun.com">一点资讯</a>
 		<a href="http://www.360doc.cn/index.html" class="sp">Doc360</a>
@@ -143,40 +178,37 @@ input, #m a, #au a, #v a, #box {
 		<a href="http://m.weibo.cn">新浪微博</a>
 		<a href="http://club.m.autohome.com.cn/bbs/forum-c-982-1.html">英朗论坛</a>
 		<a href="http://bbs.ngacn.cc/thread.php?fid=-343809&rand=594">NGA汽车</a>
+		<a href="http://121.40.196.120/weixin/lukuang/lk_table.html?nsukey=oZK4Ef4RLrdudhfyHheIapO7ZUhKGnvYrVkjjW91sTFvS1MfDhaBNXiW1yPO%2B%2Fe12iB5mdnoeCsaZnBvXMOq3ngMxwGKS2Opec%2BSYyawELwHbrfWTh53U50lE7jn14O6038ubLAGfgGqBZHWNxZfq8Sryi1waAzCmz%2BgMHrzPuC9aRYpkKLwWMJWeMOvau41">高速路况</a>
 		<a href="http://bbs.221700.com/forum.php?mobile=2">丰县论坛</a>
-		<a href="https://skycyf.gitee.io">个站1</a>
-		<a href="https://easysky.github.io">个站2</a>
-		<a href="https://easysky.top" class="sp">个站3</a>
+		<a href="https://skycyf.gitee.io">Gitee</a>
+		<a href="https://easysky.github.io">Github</a>
+		<a href="https://easysky.top" class="sp">主页</a>
 		<a href="https://easysky.top/web/note/?q=cyf@easysky">随手记</a>
-		<a href="https://m.gitee.com/skycyf">Gitee</a>
-		<a href="http://github.com">Github</a>
 		<a href="http://zh.m.wikihow.com/">WikiHow</a>
 		<a href="https://w.mail.qq.com">QQ邮箱</a>
 		<a href="http://html5.mail.10086.cn">139邮箱</a>
 		<a href="http://pan.baidu.com">百度网盘</a>
+		<a href="http://yx.bsh.me">异星软件</a>
+		<a href="http://ac.scmor.com">谷歌学术</a>
 		<a href="https://www.repaik.com/forum.php">睿派克</a>
+		<a href="https://www.mpyit.com">殁漂遥</a>
 		<a href="https://wap.shouji.com.cn/">手机乐园</a>
 		<a href="http://bbs.zhiyoo.com/forum.php?mod=forum">智友论坛</a>
 		<a href="https://www.v2ex.com">V2EX</a>
 		<a href="https://www.autoahk.com/">智能热键</a>
 		<a href="https://wyagd001.github.io/zh-cn/docs/AutoHotkey.htm" class="sp">AHK</a>
-		<a href="https://m.miguvideo.com/wap/resource/migu/live/live-list.jsp">咪咕直播</a>
-		<a href="http://m.cnwav.com">手机铃声</a>
-		<a href="https://douban.fm">豆瓣电台</a>
-		<a href="http://fm.baidu.com">百度电台</a>
-		<a href="https://music.liuzhijin.cn">音乐搜索</a>
-		<a href="http://www.app-echo.com">echo回声</a>
-		<a href="https://m.pingshu365.com">天天评书</a>
-		<a href="https://v.html5.qq.com">QQ视频</a>
-		<a href="http://m.8gdyhd.com">八哥电影</a>
+		<a href="https://asmcn.icopy.site/awesome/awesome-AutoHotkey">AHK集</a>
+		<a href="https://blog.csdn.net/me10zyl/article/details/24585023?utm_source=blogxgwz8">TC参数</a>
 		<a href="http://m.suning.com" class="sp">苏宁易购</a>
 		<a href="http://m.yhd.com/1">一号店</a>
 		<a href="https://m.smzdm.com/">值得买</a>
-		<a href="http://m.tingroom.com" class="sp">听力室</a>
+		<a href="http://m.jd.com" class="sp">京东</a>
+		<a href="http://m.taobao.com" class="sp">淘宝</a>
 		<a href="http://m.tp230.cn">头牌英语</a>
 		<a href="http://m.tingclass.net">听力课堂</a>
 		<a href="http://www.tingclass.net/list-6242-1.html?mob">365听力</a>
 		<a href="http://m.hujiang.com/en/?source=hjenglish">沪江英语</a>
+		<a href="http://m.tingroom.com" class="sp">听力室</a>
 		<a href="http://m.youdao.com">有道词典</a>
 		<a href="http://m.dict.cn">海词词典</a>
 		<a href="http://wap.iciba.com">爱词霸</a>
@@ -189,50 +221,80 @@ input, #m a, #au a, #v a, #box {
 		<a href="https://ayao.net">阿尧</a>
 	</div>
 	<div id="v">
-		<a href="http://video.m.baidu.com" target="_blank">百度小视频</a>
-		<a href="http://www.youku.com" target="_blank">优酷</a>
-		<a href="http://m.le.com" target="_blank">乐视</a>
-		<a href="http://m.iqiyi.com" target="_blank">爱奇艺</a>
-		<a href="http://m.tv.sohu.com" target="_blank">搜狐视频</a>
-		<a href="http://m.mgtv.com/#/channel/home" target="_blank">芒果TV</a>
-		<a href="http://m.v.qq.com" target="_blank">腾讯视频</a>
-		<a href="http://m.pptv.com" target="_blank">PPTV</a>
-		<a href="http://vip.1905.com" target="_blank">1905影院</a>
-		<a href="http://m.baofeng.com" target="_blank">暴风影音</a>
-		<a href="http://www.tudou.com" target="_blank">土豆视频</a>
-		<a href="http://m.bilibili.com" target="_blank">哔哩哔哩</a>
-		<a href="http://m.douyu.com" target="_blank">斗鱼</a>
-		<a href="http://m.ku6.com" target="_blank">酷6视频</a>
-		<a href="http://www.yinyuetai.com" target="_blank">音悦台</a>
-		<a href="http://m.56.com" target="_blank">56视频</a>
+		<a href="http://www.youku.com">优酷</a>
+		<a href="http://m.le.com">乐视</a>
+		<a href="http://m.iqiyi.com">爱奇艺</a>
+		<a href="https://51kdy.org">看电影</a>
+		<a href="https://www.halihali.tv">哈哩哈哩</a>
+		<a href="http://m.tv.sohu.com">搜狐视频</a>
+		<a href="http://m.mgtv.com/#/channel/home">芒果TV</a>
+		<a href="https://www.50s.wang">尘落电影</a>
+		<a href="http://m.v.qq.com">腾讯视频</a>
+		<a href="http://m.bilibili.com">哔哩哔哩</a>
+		<a href="https://www.nfmovies.com" class="sp">奈菲电影</a>
+		<a href="http://m.pptv.com">PPTV</a>
+		<a href="http://vip.1905.com">1905影院</a>
+		<a href="https://m.miguvideo.com/wap/resource/migu/live/live-list.jsp">咪咕直播</a>
+		<a href="http://m.baofeng.com">暴风影音</a>
+		<a href="http://www.tudou.com">土豆视频</a>
+		<a href="http://m.douyu.com">斗鱼</a>
+		<a href="http://m.ku6.com">酷6视频</a>
+		<a href="http://www.yinyuetai.com">音悦台</a>
+		<a href="http://m.56.com">56视频</a>
 	</div>
 	<div id="au">
-		<a href="http://m.kugou.com" target="_blank">酷狗音乐</a>
-		<a href="http://m.kuwo.cn" target="_blank">酷我音乐</a>
-		<a href="http://m.y.qq.com" target="_blank">QQ音乐</a>
-		<a href="http://music.taihe.com" target="_blank">千千音乐</a>
-		<a href="http://www.app-echo.com" target="_blank">echo回声</a>
-		<a href="http://m.yinyuetai.com" target="_blank">音悦台MV</a>
-		<a href="http://m.9ku.com" target="_blank">九酷音乐</a>
-		<a href="http://m.diyring.cc" target="_blank">酷铃铃声</a>
-		<a href="http://m.ik123.com" target="_blank">深港DJ</a>
-		<a href="http://sj.djyule.com" target="_blank">DJ音乐盒</a>
-		<a href="http://m.ximalaya.com/album-tag/music" target="_blank">喜马拉雅FM</a>
-		<a href="http://m.qingting.fm/categories/523" target="_blank">蜻蜓FM</a>
-		<a href="http://fm.baidu.com" target="_blank">百度随身听</a>
-		<a href="http://music.163.com" target="_blank">网易云音乐</a>
+		<a href="http://m.kugou.com">酷狗音乐</a>
+		<a href="http://m.kuwo.cn">酷我音乐</a>
+		<a href="http://m.y.qq.com">QQ音乐</a>
+		<a href="https://music.liuzhijin.cn" class="sp">音乐直链</a>
+		<a href="http://m.aigei.com/music/class">配乐网</a>
+		<a href="http://music.taihe.com">千千音乐</a>
+		<a href="http://www.app-echo.com">echo回声</a>
+		<a href="http://m.yinyuetai.com">音悦台MV</a>
+		<a href="https://m.pingshu365.com">天天评书</a>
+		<a href="http://m.9ku.com">九酷音乐</a>
+		<a href="http://m.diyring.cc">酷铃铃声</a>
+		<a href="http://m.ik123.com">深港DJ</a>
+		<a href="http://sj.djyule.com">DJ音乐盒</a>
+		<a href="http://m.ximalaya.com/album-tag/music">喜马拉雅FM</a>
+		<a href="http://m.qingting.fm/categories/523">蜻蜓FM</a>
+		<a href="http://fm.baidu.com">百度随身听</a>
+		<a href="http://music.163.com">网易云音乐</a>
+		<a href="http://m.cnwav.com">手机铃声</a>
+		<a href="https://douban.fm">豆瓣电台</a>
 	</div>
 </div>
+<div id="nav" onClick="shownav(0);"></div>
 <script>
-var f = "";
+var f = "",
+	str = "<span onClick='sele(this,0);'>随机</span>",
+	si = parseInt(Math.random() * 7, 10),
+	ss = [
+		["m.baidu.com/s?word=", "百度"],
+		["cn.bing.com/search?q=", "必应"],
+		["m.so.com/s?q=", "360"],
+		["wap.sogou.com/web/searchlist.jsp?keyword=", "搜狗"],
+		["gugeji.com/search?&q=", "咕咯鸡"],
+		["m.mijisou.com/?q=", "秘迹"],
+		["yandex.com/search/?text=", "Yandex"],
+		["www.google.com/search?q=", "Google"]
+	];
+document.getElementById("tit").innerText = ss[si][1];
+for (var i = 1; i < 9; i++) {
+	str += "<span onClick='sele(this," + i + ");'>" + ss[i - 1][1] + "</span>";
+}
+str += "<span onClick='sele(this,9);'>[ &#10005;]</span>";
+document.getElementById("nav").innerHTML = str;
+
 function go(i) {
 	var sk = document.getElementById("stxt").value;
 	if (sk != "") {
 		if (!i || (i && event.keyCode == 13)) {
-			window.location.href = "https://easysky.top/?q=" + sk;
+			window.location.href = "https://" + ss[si][0] + sk;
 		}
 	}
 }
+
 function switchdiv(id) {
 	var curr = document.getElementById(id);
 	if (f != "" && id != f) {
@@ -244,6 +306,29 @@ function switchdiv(id) {
 		curr.style.display = "block";
 		f = id;
 	}
+}
+
+function shownav(m) {
+	document.getElementById("nav").style.display = m?"block":"none";
+}
+
+function sele(e, n) {
+	if (n == 9) {
+		return false;
+	}
+	if (n == 0) {
+		si = parseInt(Math.random() * 8, 10);
+		document.getElementById("tit").innerHTML = ss[si][1];
+	} else {
+		si = n - 1;
+		document.getElementById("tit").innerHTML = e.innerText;
+	}
+}
+
+function clearkey() {
+	var pf = document.getElementById("stxt");
+	pf.value = "";
+	pf.focus();
 }
 </script>
 </body>
