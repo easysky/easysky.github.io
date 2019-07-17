@@ -35,6 +35,7 @@ body {
 	flex-flow:row;
 	align-items:center;
 	background-color:#fff;
+	margin-top:1.2em;
 }
 #box div {
 	text-align:center;
@@ -90,6 +91,7 @@ input:valid + .clear {
 	display:none;
 	width:97%;
 	margin:0 auto;
+	margin-top:1.2em;
 }
 #m a, #au a, #v a {
 	display:inline-block;
@@ -154,9 +156,6 @@ input, #m a, #au a, #v a, #box {
 		<div id="tit" onClick="shownav(1);">随机</div>
 		<input type="text" id="stxt" placeholder="搜索关键词" onkeyup="go(1);" required><a href="javascript:;" onClick="clearkey();" class="clear">&#10005;</a>
 		<div onClick="go(0);">搜索</div>
-	</div>
-	<div class="link">
-		<a href="http://m.ilxdh.com/">龙轩</a><a href="javascript:;" onclick="switchdiv('v');">视频</a><a href="javascript:;" onclick="switchdiv('au');">听歌</a><a href="javascript:;" onclick="switchdiv('m');">网址</a>
 	</div>
 	<div id="m">
 		<a href="http://tpms.mb.qq.com/?aid=site_navigation&cid=site_navigation_v3" class="sp">网址导航</a>
@@ -263,12 +262,15 @@ input, #m a, #au a, #v a, #box {
 		<a href="http://m.cnwav.com">手机铃声</a>
 		<a href="https://douban.fm">豆瓣电台</a>
 	</div>
+	<div class="link">
+		<a href="http://m.ilxdh.com/">龙轩</a><a href="javascript:;" onclick="switchdiv('v');">视频</a><a href="javascript:;" onclick="switchdiv('au');">听歌</a><a href="javascript:;" onclick="switchdiv('m');">网址</a>
+	</div>
 </div>
 <div id="nav" onClick="shownav(0);"></div>
 <script>
 var f = "",
 	str = "<span onClick='sele(this,0);'>随机</span>",
-	si = parseInt(Math.random() * 7, 10),
+	si = parseInt(Math.random() * 6, 10),
 	ss = [
 		["m.baidu.com/s?word=", "百度"],
 		["cn.bing.com/search?q=", "必应"],
@@ -309,7 +311,7 @@ function switchdiv(id) {
 }
 
 function shownav(m) {
-	document.getElementById("nav").style.display = m?"block":"none";
+	document.getElementById("nav").style.display = m ? "block" : "none";
 }
 
 function sele(e, n) {
@@ -317,7 +319,7 @@ function sele(e, n) {
 		return false;
 	}
 	if (n == 0) {
-		si = parseInt(Math.random() * 8, 10);
+		si = parseInt(Math.random() * 6, 10);
 		document.getElementById("tit").innerHTML = ss[si][1];
 	} else {
 		si = n - 1;
