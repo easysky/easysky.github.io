@@ -6,7 +6,7 @@ $(function(){
 		b = 0,
 		n = "面朝大海",
 		s, t;
-	$("a").attr("target", "_blank");
+	$("a").not(".mn").attr("target", "_blank");
 	if (h != "" && h.length >= 2 && $("#" + h).length > 0) {
 		h = "#" + h;
 		$(".box:not(" + h + ")").hide();
