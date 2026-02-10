@@ -1,6 +1,0 @@
-time:2019/01/01 08:18:22
-keys:2019
-<txt>
-<img src="http://img.sccnn.com/bimg/338/53414.jpg">
-<b>2019，你好！</b>
-<b>2018，再见！</b>
